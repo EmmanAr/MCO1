@@ -1,4 +1,4 @@
-package mco1;
+
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
@@ -46,7 +46,7 @@ public class GameController {
     void PGButtonPressed(ActionEvent event) throws IOException {
 
         // Load the FXML layout only (no controller)
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("C:\\Users\\johne\\OneDrive\\Documents\\GitHub\\MCO1\\bin\\mco1\\GameRunView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("GameRunView.fxml"));
         root = loader.load();  // just loads the UI
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();

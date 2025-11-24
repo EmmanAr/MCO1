@@ -1,9 +1,9 @@
-package mco1;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import mco1.Tile.Type;
+import Tile.Type;
 
 /**
  * Bomb.java

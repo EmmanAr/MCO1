@@ -1,8 +1,8 @@
-package mco1;
+
 import java.io.*;
 import java.util.*;
 
-import mco1.Tile.Type;
+import Tile.Type;
 
 /**
  * Game.java

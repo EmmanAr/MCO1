@@ -1,8 +1,8 @@
-package mco1;
+
 import java.io.Serializable;
 import java.util.Random;
 
-import mco1.Tile.Type;
+import Tile.Type;
 
 /**
  * Level.java

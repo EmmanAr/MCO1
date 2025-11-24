@@ -1,4 +1,4 @@
-package mco1;
+
 
 /**
  * Wraith.java

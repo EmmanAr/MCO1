@@ -1,4 +1,4 @@
-package mco1;
+
 import java.io.IOException;
 
 import javafx.application.Application;
@@ -25,7 +25,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/mco1/GameMenuView.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("GameMenuView.fxml"));
             Scene scene = new Scene(root);
 
             primaryStage.setTitle("Shadow Escape");
