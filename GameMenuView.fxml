@@ -7,7 +7,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameController">
    <children>
       <Button fx:id="PlayGameButton" layoutX="264.0" layoutY="240.0" mnemonicParsing="false" onAction="#PGButtonPressed" text="Play Game" />
-      <Label layoutX="284.0" layoutY="160.0" text="Game" />
+      <Label layoutX="259.0" layoutY="140.0" text="Shadow Escape" />
       <Button layoutX="281.0" layoutY="300.0" mnemonicParsing="false" text="Info" />
       <Button layoutX="283.0" layoutY="364.0" mnemonicParsing="false" text="Exit" />
    </children>
