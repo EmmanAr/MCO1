@@ -1,17 +1,50 @@
+import java.io.IOException;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
 /**
  * Main.java
+ * 
  * Entry point for the Shadow Escape console game.
  * 
- * Author: Araña, John Emmanuel M. & Sanchez, Arkin Julian C.
+ * This class simply initializes and starts the {@link Game} object,
+ * which manages all setup, input handling, and game progression logic.
+ * 
+ * Authors: Arana, John Emmanuel M. and Sanchez, Arkin Julian C.
  * Date: October 2025
  * 
- * Description:
- * This file simply starts the Game class which handles
- * all initialization, input, and turn-based game logic.
+ * @version 15.6
  */
-public class Main {
+public class Main extends Application{
+
+    @Override
+    public void start(Stage primaryStage) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("GameMenuView.fxml"));
+
+            Scene scene = new Scene(root);
+
+            primaryStage.setTitle("Hello World!");
+            primaryStage.setScene(scene);
+            primaryStage.show();
+
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Launches the Shadow Escape game by creating a {@link Game} instance
+     * and invoking its {@link Game#start()} method.
+     * 
+     * @param args command-line arguments (not used)
+     */
     public static void main(String[] args) {
-        Game game = new Game();
-        game.start();
+        launch(args);
     }
 }
