@@ -33,7 +33,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         try {
             // Loads the User's provided Menu FXML
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("GameMenuView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources_output/GameMenuView.fxml"));
             Parent root = loader.load();
 
             Scene scene = new Scene(root);

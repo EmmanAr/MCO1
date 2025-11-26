@@ -2,8 +2,6 @@
 import java.io.Serializable;
 import java.util.Random;
 
-import Tile.Type;
-
 /**
  * Level.java
  *
@@ -71,12 +69,32 @@ public class Level implements Serializable {
             }
         }
 
+        for (int j = 1; j < height - 2; j++) {
+            for(int k = 1; k < width - 2; k++){
+                if ((j % 2 == 0) && (k % 2 == 0)) {
+                    map[k][j] = new Tile(Tile.Type.HARD_WALL);
+                }
+            }
+        }
+
+        /* 
         // Randomly place soft walls in open spaces
         for (int i = 0; i < width * height / 6; i++) {
             int x = rnd.nextInt(width);
             int y = rnd.nextInt(height);
             if (map[x][y].getType() == Tile.Type.FLOOR)
                 map[x][y] = new Tile(Tile.Type.SOFT_WALL);
+        }
+        */
+
+        int i = 0;
+        while (i < 10) {
+            int x = rnd.nextInt(width);
+            int y = rnd.nextInt(height);
+            if (map[x][y].getType() == Tile.Type.FLOOR){
+            map[x][y] = new Tile(Tile.Type.SOFT_WALL);
+            i++;
+            }
         }
 
         // Place exit near bottom-right corner

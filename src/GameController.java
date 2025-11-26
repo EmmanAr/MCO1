@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
@@ -39,6 +40,28 @@ public class GameController {
 
     /** The size of one grid tile in pixels (40x40). */
     private static final int TILE_SIZE = 40;
+
+    private Image playerImage;
+    private Image shadowlingImage;
+    private Image chargerImage;
+    private Image wraithImage;
+    private Image bombImage;
+    
+    /**
+     * Loads all game sprites/images
+     */
+    private void loadImages() {
+        try {
+            //playerImage = new Image(getClass().getResourceAsStream("/player.png"));
+            shadowlingImage = new Image(getClass().getResourceAsStream("/resources_output/shadowling.png"));
+            chargerImage = new Image(getClass().getResourceAsStream("/resources_output/charger.png"));
+            wraithImage = new Image(getClass().getResourceAsStream("/resources_output/wraith.png"));
+            //bombImage = new Image(getClass().getResourceAsStream("/bomb.png"));
+        } catch (Exception e) {
+            System.err.println("Error loading images: " + e.getMessage());
+            // Fallback to colored rectangles if images fail to load
+        }
+    }
 
     /**
      * Triggered when the "Play Game" button is clicked in the Menu.
@@ -81,7 +104,7 @@ public class GameController {
 
         // Setup Game Loop (Timer)
         // Runs logic every 1.0 seconds. Adjust Duration.seconds(X) to change game speed.
-        Timeline gameLoop = new Timeline(new KeyFrame(Duration.seconds(1.0), e -> {
+        Timeline gameLoop = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
             if (!game.isGameOver()) {
                 game.updateGameLogic();
                 render();
@@ -133,11 +156,26 @@ public class GameController {
 
         // Draw Enemies (Color coded by type)
         for (Enemy e : state.getEnemies()) {
-            if (e instanceof Charger) gc.setFill(Color.ORANGERED);
-            else if (e instanceof Wraith) gc.setFill(Color.PURPLE);
-            else gc.setFill(Color.RED); // Default Shadowling
+            Image enemyImage = null;
             
-            gc.fillRect(e.getX() * TILE_SIZE + 5, e.getY() * TILE_SIZE + 5, TILE_SIZE - 10, TILE_SIZE - 10);
+            if (e instanceof Charger && chargerImage != null) {
+                enemyImage = chargerImage;
+            } else if (e instanceof Wraith && wraithImage != null) {
+                enemyImage = wraithImage;
+            } else if (e instanceof Shadowling && shadowlingImage != null) {
+                enemyImage = shadowlingImage;
+            }
+            
+            if (enemyImage != null) {
+                gc.drawImage(enemyImage, e.getX() * TILE_SIZE, e.getY() * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+            } else {
+                // Fallback to colored rectangles
+                if (e instanceof Charger) gc.setFill(Color.ORANGERED);
+                else if (e instanceof Wraith) gc.setFill(Color.PURPLE);
+                else gc.setFill(Color.RED);
+                
+                gc.fillRect(e.getX() * TILE_SIZE + 5, e.getY() * TILE_SIZE + 5, TILE_SIZE - 10, TILE_SIZE - 10);
+            }
         }
 
         // Draw Player
